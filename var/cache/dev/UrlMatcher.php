@@ -13,6 +13,10 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/backoffice/region/list' => [[['_route' => 'region_index', '_controller' => 'App\\Controller\\RegionController::index'], null, null, null, true, false, null]],
+        '/backoffice/region/new' => [[['_route' => 'region_new', '_controller' => 'App\\Controller\\RegionController::new'], null, null, null, false, false, null]],
+        '/owner/room/list' => [[['_route' => 'room_index', '_controller' => 'App\\Controller\\RoomController::index'], null, null, null, true, false, null]],
+        '/owner/room/new' => [[['_route' => 'room_new', '_controller' => 'App\\Controller\\RoomController::new'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -31,6 +35,16 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/backoffice/region/(?'
+                    .'|(\\d+)(*:196)'
+                    .'|(\\d+)/edit(*:214)'
+                    .'|(\\d+)(*:227)'
+                .')'
+                .'|/owner/room/([^/]++)(?'
+                    .'|(*:259)'
+                    .'|/edit(*:272)'
+                    .'|(*:280)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -40,8 +54,14 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        196 => [[['_route' => 'region_show', '_controller' => 'App\\Controller\\RegionController::show'], ['id'], null, null, false, true, null]],
+        214 => [[['_route' => 'region_edit', '_controller' => 'App\\Controller\\RegionController::edit'], ['id'], null, null, false, false, null]],
+        227 => [[['_route' => 'region_delete', '_controller' => 'App\\Controller\\RegionController::delete'], ['id'], null, null, false, true, null]],
+        259 => [[['_route' => 'room_show', '_controller' => 'App\\Controller\\RoomController::show'], ['id'], null, null, false, true, null]],
+        272 => [[['_route' => 'room_edit', '_controller' => 'App\\Controller\\RoomController::edit'], ['id'], null, null, false, false, null]],
+        280 => [
+            [['_route' => 'room_delete', '_controller' => 'App\\Controller\\RoomController::delete'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

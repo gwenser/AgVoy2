@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegionController!{% endblock %}
+{% block title %}Découvrir nos régions!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,26 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Découvrez nos magnifiques régions !</h1>
+    <table class="table">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/serandour/couette_et_café/agvoy-app-03/src/Controller/RegionController.php'|file_link(0) }}">src/Controller/RegionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/serandour/couette_et_café/agvoy-app-03/templates/region/index.html.twig'|file_link(0) }}">templates/region/index.html.twig</a></code></li>
-    </ul>
+    {% for region in regions %}
+
+    <tr>
+        <td>
+            {{ region.name }}
+        </td>
+        <td>
+            {{ region.presentation }}
+        </td>
+        <td><a href="{{ path('region_show', {'id': region.id}) }}">show</a></td>
+    </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
+    {% endfor %}
+    </table>
 </div>
+
 {% endblock %}

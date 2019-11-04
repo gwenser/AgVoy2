@@ -388,6 +388,13 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/home/serandour/couette_et_café/agvoy-app-03/var/log/dev.log</argument>
     </service>
+    <service id="App\Controller\RegionController" class="App\Controller\RegionController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CDOTD6..App\Controller\RegionController"/>
+      </call>
+    </service>
     <service id="App\Controller\RoomController" class="App\Controller\RoomController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -2127,14 +2134,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4514,6 +4513,9 @@
         </argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4687,9 +4689,18 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.9_yeNH1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.vIHt.Cx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="region" type="service" id=".errored..service_locator.vIHt.Cx.App\Entity\Region"/>
+      </argument>
+    </service>
+    <service id=".service_locator.JVY4YBw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\RegionController::show" type="service" id=".service_locator.vIHt.Cx"/>
+        <argument key="App\Controller\RegionController:show" type="service" id=".service_locator.vIHt.Cx"/>
+      </argument>
     </service>
     <service id=".service_locator.LtnrEkg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -4969,6 +4980,12 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.CDOTD6..App\Controller\RegionController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\RegionController"/>
+      <argument>App\Controller\RegionController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CDOTD6." method="withContext"/>
+    </service>
     <service id=".service_locator.CDOTD6..App\Controller\RoomController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\RoomController"/>
       <argument>App\Controller\RoomController</argument>
@@ -5068,12 +5085,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.9_yeNH1"/>
+      <argument type="service" id=".service_locator.JVY4YBw"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.9_yeNH1"/>
+      <argument type="service" id=".service_locator.JVY4YBw"/>
     </service>
     <service id=".service_locator.UwRI0uT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -5097,6 +5114,7 @@
         <argument key="security.token_storage" type="service" id="security.token_storage"/>
       </argument>
     </service>
+    <service id=".errored..service_locator.vIHt.Cx.App\Entity\Region" class="App\Entity\Region"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.JgKnBZT"/>
       <argument type="collection">
@@ -5449,7 +5467,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9_yeNH1"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.JVY4YBw"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>
