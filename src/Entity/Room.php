@@ -59,9 +59,15 @@ class Room
      */
     private $regions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Indisponibility", mappedBy="room", orphanRemoval=true)
+     */
+    private $indisponibilities;
+
     public function __construct()
     {
         $this->regions = new ArrayCollection();
+        $this->indisponibilities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -184,5 +190,36 @@ class Room
     public function __toString()
     {
         return $this->summary;
+    }
+
+    /**
+     * @return Collection|Indisponibility[]
+     */
+    public function getIndisponibilities(): Collection
+    {
+        return $this->indisponibilities;
+    }
+
+    public function addIndisponibility(Indisponibility $indisponibility): self
+    {
+        if (!$this->indisponibilities->contains($indisponibility)) {
+            $this->indisponibilities[] = $indisponibility;
+            $indisponibility->setRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIndisponibility(Indisponibility $indisponibility): self
+    {
+        if ($this->indisponibilities->contains($indisponibility)) {
+            $this->indisponibilities->removeElement($indisponibility);
+            // set the owning side to null (unless already changed)
+            if ($indisponibility->getRoom() === $this) {
+                $indisponibility->setRoom(null);
+            }
+        }
+
+        return $this;
     }
 }

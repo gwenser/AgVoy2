@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7db252c-64ab-459e-bade-0f70cd102528" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/owner/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OwnerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OwnerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/region/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/region/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/room/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/room/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Room.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +167,7 @@
       <workItem from="1571145786187" duration="8570000" />
       <workItem from="1571732633212" duration="8243000" />
       <workItem from="1572898225754" duration="1999000" />
-      <workItem from="1573549460305" duration="12569000" />
+      <workItem from="1573549460305" duration="13117000" />
     </task>
     <servers />
   </component>
