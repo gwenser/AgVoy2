@@ -30,7 +30,7 @@
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
-        <parameter key="path">/home/serandour/couette_et_café/agvoy-app-03/vendor/sensio/framework-extra-bundle</parameter>
+        <parameter key="path">/home/serandour/couette_et_café/agvoy-app-03/vendor/sensio/framework-extra-bundle/src</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="DoctrineCacheBundle" type="collection">
@@ -1167,9 +1167,6 @@
           <argument type="service" id="doctrine.orm.validator_initializer"/>
         </argument>
       </call>
-      <call method="addLoader">
-        <argument type="service" id="doctrine.orm.default_entity_manager.validator_loader"/>
-      </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
@@ -1500,7 +1497,7 @@
           <argument>/home/serandour/couette_et_café/agvoy-app-03/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/symfony/framework-bundle/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/FrameworkBundle/translations</argument>
-          <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/sensio/framework-extra-bundle/Resources/translations</argument>
+          <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/sensio/framework-extra-bundle/src/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/SensioFrameworkExtraBundle/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/doctrine/doctrine-cache-bundle/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/DoctrineCacheBundle/translations</argument>
@@ -2134,6 +2131,14 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -3162,11 +3167,6 @@
       <tag name="property_info.access_extractor" priority="-999"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager.validator_loader" class="Symfony\Bridge\Doctrine\Validator\DoctrineLoader">
-      <tag name="validator.auto_mapper" priority="-100"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <argument>null</argument>
-    </service>
     <service id="doctrine_migrations.diff_command" class="Doctrine\Bundle\MigrationsBundle\Command\MigrationsDiffDoctrineCommand">
       <tag name="console.command"/>
     </service>
@@ -3275,15 +3275,15 @@
       <argument></argument>
       <argument></argument>
       <argument></argument>
-      <argument></argument>
-      <argument></argument>
+      <argument>false</argument>
+      <argument>false</argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument type="collection"/>
-      <argument></argument>
+      <argument>null</argument>
     </service>
     <service id="security.logout_url_generator" class="Symfony\Component\Security\Http\Logout\LogoutUrlGenerator" public="false">
       <argument type="service" id="request_stack" on-invalid="null"/>
@@ -3653,14 +3653,14 @@
       <argument>security.user_checker</argument>
       <argument>.security.request_matcher.Iy.T22O</argument>
       <argument>false</argument>
-      <argument></argument>
+      <argument>false</argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument></argument>
       <argument type="collection"/>
-      <argument></argument>
+      <argument>null</argument>
     </service>
     <service id=".security.request_matcher.Iy.T22O" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/(_(profiler|wdt)|css|images|js)/</argument>
@@ -3774,7 +3774,7 @@
     <service id="swiftmailer.transport.smtp.abstract" class="Swift_Transport_EsmtpTransport" public="false" abstract="true"/>
     <service id="swiftmailer.transport.spool.abstract" class="Swift_Transport_SpoolTransport" public="false" abstract="true"/>
     <service id="swiftmailer.spool.file.abstract" class="Swift_FileSpool" public="false" abstract="true">
-      <argument>/home/serandour/couette_et_café/agvoy-app-03/src/../data/swiftmailer/spool</argument>
+      <argument></argument>
     </service>
     <service id="swiftmailer.spool.memory.abstract" class="Swift_MemorySpool" public="false" abstract="true"/>
     <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
