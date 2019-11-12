@@ -412,6 +412,10 @@
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Repository\IndisponibilityRepository" class="App\Repository\IndisponibilityRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -1501,7 +1505,6 @@
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/symfony/validator/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/symfony/form/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/symfony/security-core/Resources/translations</argument>
-          <argument>/home/serandour/couette_et_café/agvoy-app-03/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/symfony/framework-bundle/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/FrameworkBundle/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/sensio/framework-extra-bundle/src/Resources/translations</argument>
@@ -1530,6 +1533,7 @@
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/WebServerBundle/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/vendor/doctrine/doctrine-fixtures-bundle/Resources/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/DoctrineFixturesBundle/translations</argument>
+          <argument>/home/serandour/couette_et_café/agvoy-app-03/translations</argument>
           <argument>/home/serandour/couette_et_café/agvoy-app-03/src/Resources/translations</argument>
         </argument>
       </argument>
@@ -2959,7 +2963,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.GWlAcBu"/>
+      <argument type="service" id=".service_locator.wvd6NMe"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4531,6 +4535,8 @@
     <service id=".abstract.instanceof.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\IndisponibilityRepository" class="App\Repository\IndisponibilityRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\IndisponibilityRepository" class="App\Repository\IndisponibilityRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RegionRepository" class="App\Repository\RegionRepository" autowire="true" abstract="true"/>
@@ -4802,9 +4808,10 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.GWlAcBu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.wvd6NMe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\IndisponibilityRepository" type="service" id="App\Repository\IndisponibilityRepository"/>
         <argument key="App\Repository\OwnerRepository" type="service" id="App\Repository\OwnerRepository"/>
         <argument key="App\Repository\RegionRepository" type="service" id="App\Repository\RegionRepository"/>
         <argument key="App\Repository\RoomRepository" type="service" id="App\Repository\RoomRepository"/>
