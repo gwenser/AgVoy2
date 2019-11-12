@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="008369b1-a568-438f-b524-dad5b8fd5e7c" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
@@ -291,6 +292,9 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
+=======
+    <list default="true" id="a7db252c-64ab-459e-bade-0f70cd102528" name="Default Changelist" comment="" />
+>>>>>>> 49f47258de86e4bd8f8305712df446629612ef27
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
