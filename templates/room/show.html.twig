@@ -15,7 +15,11 @@
         <h1>{{ room.superficy }}</h1>
         <h1>{{ room.price }}</h1>
         <h1>{{ room.address }}</h1>
-        <h1>{{ room.owner }}</h1>
+        <tr>
+            <td>{{ room.owner }}</td>
+            <td><a href="{{ path('owner_show', {'id': room.owner.id}) }}">show</a></td>
+        </tr>
+
     </div>
 
 {% endblock %}

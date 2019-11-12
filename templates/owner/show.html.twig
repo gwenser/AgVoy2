@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Découvrir nos régions!{% endblock %}
+{% block title %}{{ owner.familyName }}{% endblock %}
 
 {% block body %}
     <style>
@@ -9,17 +9,16 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>{{ region.name }}</h1>
-        <h1>{{ region.presentation }}</h1>
-        <h1>{{ region.country }}</h1>
-
-        {% for room in region.room %}
+        <h1>{{ owner.firstname }}</h1>
+        <h1>{{ owner.familyName }}</h1>
+        <h1>{{ owner.address }}</h1>
+        <h1>{{ owner.country }}</h1>
+        {% for room in owner.rooms %}
             <tr>
                 <td>{{ room }}</td>
                 <td><a href="{{ path('room_show', {'id': room.id}) }}">show</a></td>
             </tr>
         {% endfor %}
-
     </div>
 
 {% endblock %}

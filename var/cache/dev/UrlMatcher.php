@@ -36,15 +36,18 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/backoffice/region/(?'
-                    .'|(\\d+)(*:196)'
-                    .'|(\\d+)/edit(*:214)'
-                    .'|(\\d+)(*:227)'
+                .'|/owner/(?'
+                    .'|([^/]++)(*:187)'
+                    .'|room/([^/]++)(?'
+                        .'|(*:211)'
+                        .'|/edit(*:224)'
+                        .'|(*:232)'
+                    .')'
                 .')'
-                .'|/owner/room/([^/]++)(?'
-                    .'|(*:259)'
-                    .'|/edit(*:272)'
-                    .'|(*:280)'
+                .'|/backoffice/region/(?'
+                    .'|(\\d+)(*:269)'
+                    .'|(\\d+)/edit(*:287)'
+                    .'|(\\d+)(*:300)'
                 .')'
             .')/?$}sDu',
     ],
@@ -56,13 +59,14 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        196 => [[['_route' => 'region_show', '_controller' => 'App\\Controller\\RegionController::show'], ['id'], null, null, false, true, null]],
-        214 => [[['_route' => 'region_edit', '_controller' => 'App\\Controller\\RegionController::edit'], ['id'], null, null, false, false, null]],
-        227 => [[['_route' => 'region_delete', '_controller' => 'App\\Controller\\RegionController::delete'], ['id'], null, null, false, true, null]],
-        259 => [[['_route' => 'room_show', '_controller' => 'App\\Controller\\RoomController::show'], ['id'], null, null, false, true, null]],
-        272 => [[['_route' => 'room_edit', '_controller' => 'App\\Controller\\RoomController::edit'], ['id'], null, null, false, false, null]],
-        280 => [
-            [['_route' => 'room_delete', '_controller' => 'App\\Controller\\RoomController::delete'], ['id'], null, null, false, true, null],
+        187 => [[['_route' => 'owner_show', '_controller' => 'App\\Controller\\OwnerController::show'], ['id'], null, null, false, true, null]],
+        211 => [[['_route' => 'room_show', '_controller' => 'App\\Controller\\RoomController::show'], ['id'], null, null, false, true, null]],
+        224 => [[['_route' => 'room_edit', '_controller' => 'App\\Controller\\RoomController::edit'], ['id'], null, null, false, false, null]],
+        232 => [[['_route' => 'room_delete', '_controller' => 'App\\Controller\\RoomController::delete'], ['id'], null, null, false, true, null]],
+        269 => [[['_route' => 'region_show', '_controller' => 'App\\Controller\\RegionController::show'], ['id'], null, null, false, true, null]],
+        287 => [[['_route' => 'region_edit', '_controller' => 'App\\Controller\\RegionController::edit'], ['id'], null, null, false, false, null]],
+        300 => [
+            [['_route' => 'region_delete', '_controller' => 'App\\Controller\\RegionController::delete'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

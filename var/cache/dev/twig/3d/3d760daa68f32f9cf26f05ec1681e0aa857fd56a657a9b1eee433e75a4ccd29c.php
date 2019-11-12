@@ -115,10 +115,17 @@ class __TwigTemplate_d252cd70deb230f6f7626635fbbf60574a36abb2f2ab4972987521b9e37
         // line 17
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 17, $this->source); })()), "address", [], "any", false, false, false, 17), "html", null, true);
         echo "</h1>
-        <h1>";
-        // line 18
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 18, $this->source); })()), "owner", [], "any", false, false, false, 18), "html", null, true);
-        echo "</h1>
+        <tr>
+            <td>";
+        // line 19
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 19, $this->source); })()), "owner", [], "any", false, false, false, 19), "html", null, true);
+        echo "</td>
+            <td><a href=\"";
+        // line 20
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_show", ["id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 20, $this->source); })()), "owner", [], "any", false, false, false, 20), "id", [], "any", false, false, false, 20)]), "html", null, true);
+        echo "\">show</a></td>
+        </tr>
+
     </div>
 
 ";
@@ -142,7 +149,7 @@ class __TwigTemplate_d252cd70deb230f6f7626635fbbf60574a36abb2f2ab4972987521b9e37
 
     public function getDebugInfo()
     {
-        return array (  120 => 18,  116 => 17,  112 => 16,  108 => 15,  104 => 14,  100 => 13,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  125 => 20,  121 => 19,  116 => 17,  112 => 16,  108 => 15,  104 => 14,  100 => 13,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -164,7 +171,11 @@ class __TwigTemplate_d252cd70deb230f6f7626635fbbf60574a36abb2f2ab4972987521b9e37
         <h1>{{ room.superficy }}</h1>
         <h1>{{ room.price }}</h1>
         <h1>{{ room.address }}</h1>
-        <h1>{{ room.owner }}</h1>
+        <tr>
+            <td>{{ room.owner }}</td>
+            <td><a href=\"{{ path('owner_show', {'id': room.owner.id}) }}\">show</a></td>
+        </tr>
+
     </div>
 
 {% endblock %}", "room/show.html.twig", "/home/serandour/couette_et_café/agvoy-app-03/templates/room/show.html.twig");

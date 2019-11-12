@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Owner;
 
 class OwnerController extends AbstractController
 {
@@ -16,4 +17,15 @@ class OwnerController extends AbstractController
             'controller_name' => 'OwnerController',
         ]);
     }
+
+    /**
+     * @Route("/owner/{id}", name="owner_show")
+     */
+    public function show(Owner $owner){
+        return $this->render('owner/show.html.twig', array(
+                'owner' => $owner,
+            )
+        );
+    }
+
 }

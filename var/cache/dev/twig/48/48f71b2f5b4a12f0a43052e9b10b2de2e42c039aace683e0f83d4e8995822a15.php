@@ -103,27 +103,30 @@ class __TwigTemplate_621bb4b6dc2afab2784c0cefb30a950d7c0ab5b8779b17164504829290a
         // line 14
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["region"]) || array_key_exists("region", $context) ? $context["region"] : (function () { throw new RuntimeError('Variable "region" does not exist.', 14, $this->source); })()), "country", [], "any", false, false, false, 14), "html", null, true);
         echo "</h1>
-        <tr>
-            ";
+
+        ";
         // line 16
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["region"]) || array_key_exists("region", $context) ? $context["region"] : (function () { throw new RuntimeError('Variable "region" does not exist.', 16, $this->source); })()), "room", [], "any", false, false, false, 16));
         foreach ($context['_seq'] as $context["_key"] => $context["room"]) {
             // line 17
-            echo "                <td>";
+            echo "            <tr>
+                <td>";
+            // line 18
             echo twig_escape_filter($this->env, $context["room"], "html", null, true);
             echo "</td>
                 <td><a href=\"";
-            // line 18
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_show", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 18)]), "html", null, true);
+            // line 19
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_show", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 19)]), "html", null, true);
             echo "\">show</a></td>
-            ";
+            </tr>
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['room'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 20
-        echo "        </tr>
+        // line 22
+        echo "
     </div>
 
 ";
@@ -147,7 +150,7 @@ class __TwigTemplate_621bb4b6dc2afab2784c0cefb30a950d7c0ab5b8779b17164504829290a
 
     public function getDebugInfo()
     {
-        return array (  126 => 20,  118 => 18,  113 => 17,  109 => 16,  104 => 14,  100 => 13,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  129 => 22,  120 => 19,  116 => 18,  113 => 17,  109 => 16,  104 => 14,  100 => 13,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -166,12 +169,14 @@ class __TwigTemplate_621bb4b6dc2afab2784c0cefb30a950d7c0ab5b8779b17164504829290a
         <h1>{{ region.name }}</h1>
         <h1>{{ region.presentation }}</h1>
         <h1>{{ region.country }}</h1>
-        <tr>
-            {% for room in region.room %}
+
+        {% for room in region.room %}
+            <tr>
                 <td>{{ room }}</td>
                 <td><a href=\"{{ path('room_show', {'id': room.id}) }}\">show</a></td>
-            {% endfor %}
-        </tr>
+            </tr>
+        {% endfor %}
+
     </div>
 
 {% endblock %}

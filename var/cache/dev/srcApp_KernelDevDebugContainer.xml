@@ -4699,6 +4699,12 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.1sVfNg4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="owner" type="service" id=".errored..service_locator.1sVfNg4.App\Entity\Owner"/>
+      </argument>
+    </service>
     <service id=".service_locator.vIHt.Cx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4711,11 +4717,13 @@
         <argument key="room" type="service" id=".errored..service_locator.BkOHXLl.App\Entity\Room"/>
       </argument>
     </service>
-    <service id=".service_locator.Dox_RA_" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.OhmUMTB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\OwnerController::show" type="service" id=".service_locator.1sVfNg4"/>
         <argument key="App\Controller\RegionController::show" type="service" id=".service_locator.vIHt.Cx"/>
         <argument key="App\Controller\RoomController::show" type="service" id=".service_locator.BkOHXLl"/>
+        <argument key="App\Controller\OwnerController:show" type="service" id=".service_locator.1sVfNg4"/>
         <argument key="App\Controller\RegionController:show" type="service" id=".service_locator.vIHt.Cx"/>
         <argument key="App\Controller\RoomController:show" type="service" id=".service_locator.BkOHXLl"/>
       </argument>
@@ -5109,12 +5117,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.Dox_RA_"/>
+      <argument type="service" id=".service_locator.OhmUMTB"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.Dox_RA_"/>
+      <argument type="service" id=".service_locator.OhmUMTB"/>
     </service>
     <service id=".service_locator.UwRI0uT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -5138,6 +5146,7 @@
         <argument key="security.token_storage" type="service" id="security.token_storage"/>
       </argument>
     </service>
+    <service id=".errored..service_locator.1sVfNg4.App\Entity\Owner" class="App\Entity\Owner"/>
     <service id=".errored..service_locator.vIHt.Cx.App\Entity\Region" class="App\Entity\Region"/>
     <service id=".errored..service_locator.BkOHXLl.App\Entity\Room" class="App\Entity\Room"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
@@ -5492,7 +5501,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Dox_RA_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.OhmUMTB"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>
