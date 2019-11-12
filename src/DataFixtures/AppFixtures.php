@@ -16,20 +16,16 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach ($this->getRegionsData() as [$country, $name, $presentation]) {
+        foreach ($this->getRegionsData() as [$country, $name, $presentation, $ref]) {
             $region = new Region();
             $region->setCountry($country);
             $region->setName($name);
             $region->setPresentation($presentation);
-            $this->addReference(self::IDF_REGION_REFERENCE, $region);
+            $this->addReference($ref, $region);
             $manager->persist($region);
         }
         $manager->flush();
 
-        $manager->flush();
-        // Une fois l'instance de Region sauvée en base de données,
-        // elle dispose d'un identifiant généré par Doctrine, et peut
-        // donc être sauvegardée comme future référence.
 
         // ...
         $owner = new Owner();
@@ -38,33 +34,32 @@ class AppFixtures extends Fixture
         $owner->setCountry("FR");
         $owner->setFirstname("Albert");
 
-        $room = new Room();
-        $room->setSummary("Beau poulailler ancien à Évry");
-        $room->setDescription("très joli espace sur paille");
-        $room->setAddress("52 avenue du pont levis");
-        $room->setCapacity(4);
-        $room->setSuperficy(1000);
-        $room->setPrice(500);
-        $room->setOwner($owner);
-        //$room->addRegion($region);
-        // On peut plutôt faire une référence explicite à la référence
-        // enregistrée précédamment, ce qui permet d'éviter de se
-        // tromper d'instance de Region :
-        $room->addRegion($this->getReference(self::IDF_REGION_REFERENCE));
-        $manager->persist($room);
+        foreach ($this->getRoomsData() as [$summary, $description, $address, $capacity, $superficy, $price, $ref]){
+            $room = new Room();
+            $room->setSummary($summary);
+            $room->setDescription($description);
+            $room->setAddress($address);
+            $room->setCapacity($capacity);
+            $room->setSuperficy($superficy);
+            $room->setPrice($price);
+            $room->setOwner($owner);
+            $room->addRegion($this->getReference($ref));
+            $manager->persist($room);
+        }
+
 
         $manager->flush();
         //...
     }
     private function getRegionsData()
     {
-        yield ['FR', 'Ile de France', 'La région française capitale'];
-        yield ['FR', 'Bretagne', 'La région des crêpes'];
+        yield ['FR', 'Ile de France', 'La région française capitale', self::IDF_REGION_REFERENCE];
+        yield ['FR', 'Bretagne', 'La région des crêpes', self::BRE_REGION_REFERENCE];
     }
     private function getRoomsData()
     {
-        yield ['Beau poulailler ancien à Évry', 'très joli espace sur paille', '52 avenue du pont levis', 4, 1000, 500];
-        yield ['petite maison de campagne', 'possédant un beau jardin', '2 rue charles fourier', 3, 700, 700];
+        yield ['Beau poulailler ancien à Évry', 'très joli espace sur paille', '52 avenue du pont levis', 4, 1000, 500, self::IDF_REGION_REFERENCE];
+        yield ['Petite maison de campagne', 'possédant un beau jardin', '2 rue charles fourier', 3, 700, 700, self::BRE_REGION_REFERENCE];
 
     }
 }

@@ -35,8 +35,11 @@ class RoomController extends AbstractController
      * @Route("/owner/room/{id}", name="room_show")
      */
 
-    public function show(){
-
+    public function show(Room $room){
+        return $this->render('room/show.html.twig', array(
+                'room' => $room,
+            )
+        );
     }
 
     /**

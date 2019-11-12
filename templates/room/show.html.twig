@@ -9,15 +9,13 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>{{ region.name }}</h1>
-        <h1>{{ region.presentation }}</h1>
-        <h1>{{ region.country }}</h1>
-        <tr>
-            {% for room in region.room %}
-                <td>{{ room }}</td>
-                <td><a href="{{ path('room_show', {'id': room.id}) }}">show</a></td>
-            {% endfor %}
-        </tr>
+        <h1>{{ room.summary }}</h1>
+        <h1>{{ room.description }}</h1>
+        <h1>{{ room.capacity }}</h1>
+        <h1>{{ room.superficy }}</h1>
+        <h1>{{ room.price }}</h1>
+        <h1>{{ room.address }}</h1>
+        <h1>{{ room.owner }}</h1>
     </div>
 
 {% endblock %}
