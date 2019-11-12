@@ -16,8 +16,12 @@ return [
         '/owner' => [[['_route' => 'owner', '_controller' => 'App\\Controller\\OwnerController::index'], null, null, null, false, false, null]],
         '/backoffice/region/list' => [[['_route' => 'region_index', '_controller' => 'App\\Controller\\RegionController::index'], null, null, null, true, false, null]],
         '/backoffice/region/new' => [[['_route' => 'region_new', '_controller' => 'App\\Controller\\RegionController::new'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/owner/room/list' => [[['_route' => 'room_index', '_controller' => 'App\\Controller\\RoomController::index'], null, null, null, true, false, null]],
         '/owner/room/new' => [[['_route' => 'room_new', '_controller' => 'App\\Controller\\RoomController::new'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'frontpage', '_controller' => 'App\\Controller\\WebController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

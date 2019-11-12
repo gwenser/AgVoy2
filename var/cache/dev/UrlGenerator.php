@@ -22,9 +22,13 @@ return [
     'region_show' => [['id'], ['_controller' => 'App\\Controller\\RegionController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/backoffice/region']], [], []],
     'region_edit' => [['id'], ['_controller' => 'App\\Controller\\RegionController::edit'], ['id' => '\\d+'], [['text', '/edit'], ['variable', '/', '\\d+', 'id', true], ['text', '/backoffice/region']], [], []],
     'region_delete' => [['id'], ['_controller' => 'App\\Controller\\RegionController::delete'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/backoffice/region']], [], []],
+    'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], []],
     'room_index' => [[], ['_controller' => 'App\\Controller\\RoomController::index'], [], [['text', '/owner/room/list/']], [], []],
     'room_new' => [[], ['_controller' => 'App\\Controller\\RoomController::new'], [], [['text', '/owner/room/new']], [], []],
     'room_show' => [['id'], ['_controller' => 'App\\Controller\\RoomController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/owner/room']], [], []],
     'room_edit' => [['id'], ['_controller' => 'App\\Controller\\RoomController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/owner/room']], [], []],
     'room_delete' => [['id'], ['_controller' => 'App\\Controller\\RoomController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/owner/room']], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
+    'frontpage' => [[], ['_controller' => 'App\\Controller\\WebController::index'], [], [['text', '/']], [], []],
 ];
